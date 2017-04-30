@@ -1,0 +1,11 @@
+"STARTUP.obj",
+"EEPROM.obj",
+"IMU.obj",
+"Micropilot.obj",
+"MPU-6050.obj",
+"NRF24L01.obj",
+"STC15W4KPWM.obj",
+"Timer.obj",
+"USART.obj" 
+TO "Micropilot" 
+RAMSIZE(256) 

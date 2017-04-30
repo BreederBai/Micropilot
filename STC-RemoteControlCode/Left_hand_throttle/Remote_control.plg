@@ -1,0 +1,109 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\songs\Desktop\Micropilot\新建文件夹\Remote_control.uvproj
+Project File Date:  04/30/2017
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling AD.C...
+compiling NRF24L01.C...
+compiling Remote_control.C...
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: K1SMC-H5SICC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"STARTUP.obj",
+"AD.obj",
+"NRF24L01.obj",
+"Remote_control.obj" 
+TO "Remote_control" 
+RAMSIZE(256) 
+*** FATAL ERROR L210: I/O ERROR ON INPUT FILE:
+    EXCEPTION 0021H: PATH OR FILE NOT FOUND
+    FILE: C:\KEIL_V5\C51\LIB\RTX51.LIB
+Target not created
+Build target 'Target 1'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: K1SMC-H5SICC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"STARTUP.obj",
+"AD.obj",
+"NRF24L01.obj",
+"Remote_control.obj" 
+TO "Remote_control" 
+RAMSIZE(256) 
+*** FATAL ERROR L210: I/O ERROR ON INPUT FILE:
+    EXCEPTION 0021H: PATH OR FILE NOT FOUND
+    FILE: C:\KEIL_V5\C51\LIB\RTX51.LIB
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling AD.C...
+compiling NRF24L01.C...
+compiling Remote_control.C...
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: K1SMC-H5SICC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"STARTUP.obj",
+"AD.obj",
+"NRF24L01.obj",
+"Remote_control.obj" 
+TO "Remote_control" 
+RAMSIZE(256) 
+*** FATAL ERROR L210: I/O ERROR ON INPUT FILE:
+    EXCEPTION 0021H: PATH OR FILE NOT FOUND
+    FILE: C:\KEIL_V5\C51\LIB\RTX51.LIB
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling AD.C...
+compiling NRF24L01.C...
+compiling Remote_control.C...
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: K1SMC-H5SICC
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"STARTUP.obj",
+"AD.obj",
+"NRF24L01.obj",
+"Remote_control.obj" 
+TO "Remote_control" 
+RAMSIZE(256) 
+*** FATAL ERROR L210: I/O ERROR ON INPUT FILE:
+    EXCEPTION 0021H: PATH OR FILE NOT FOUND
+    FILE: C:\KEIL_V5\C51\LIB\RTX51.LIB
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling AD.C...
+compiling NRF24L01.C...
+compiling Remote_control.C...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INIT_NRF24L012?NRF24L01
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SETRX_MODE?NRF24L01
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_NRF24L01_RXPACKET?NRF24L01
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_SPI_WRITE_BUF?NRF24L01
+    CALLER1: ?PR?AD?REMOTE_CONTROL
+    CALLER2: ?PR?NRF24L01?REMOTE_CONTROL
+Program Size: data=82.1 xdata=31 code=2774
+"Remote_control" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INIT_NRF24L012?NRF24L01
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SETRX_MODE?NRF24L01
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_NRF24L01_RXPACKET?NRF24L01
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_SPI_WRITE_BUF?NRF24L01
+    CALLER1: ?PR?AD?REMOTE_CONTROL
+    CALLER2: ?PR?NRF24L01?REMOTE_CONTROL
+Program Size: data=82.1 xdata=31 code=2774
+"Remote_control" - 0 Error(s), 4 Warning(s).

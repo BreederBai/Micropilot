@@ -1,0 +1,149 @@
+C51 COMPILER V9.01   REMOTE_CONTROL                                                        04/30/2017 21:08:49 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE REMOTE_CONTROL
+OBJECT MODULE PLACED IN Remote_control.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE Remote_control.C LARGE BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          //Ì×¼ş¹ºÂòµØÖ·                http://shop112966725.taobao.com
+   2          //                                        STCunio
+   3          
+   4          //**********************************Ò£¿ØÆ÷³ÌĞòRev1.3ÕıÊ½°æ*************************
+   5          //ÉùÃ÷£º³ÌĞò×÷Õß²»»á¶Ô±¾³ÌĞò½øĞĞÈÎºÎÉı¼¶ÁË£¬¸Ã³ÌĞò¾ÍÊÇ¸ÃÓ²¼şµÄ×îÖÕ°æ±¾
+   6          //±¾³ÌĞò¿ÉÒÔ×ÔĞĞ¶ş´Î¿ª·¢£¬²»¹ıĞèÒª½«¿ª·¢ºóµÄ°æ±¾ÉÏ´«µ½°¢ÄªÂÛÌ³£¬ÕâÑù±¾³ÌĞò¿ªÔ´²ÅÓĞÒâÒå£¬Ğ»Ğ»£¡
+   7          //          ³ÌĞò£ºSWUST µçÆø×Ô¶¯»¯13¼¶ LQM
+   8          
+   9          //          ±¾³ÌĞòÊÊÓÃÓÚSTCËÄÖáµÄÃÀ¹úÊÖÒ£¿ØÆ÷£¨×óÊÖÓÍÃÅ£©
+  10          //×óÊÖÉÏÏÂÎªÓÍÃÅ£¬×óÓÒÎªĞı×ª
+  11          //ÓÒÊÖÉÏÏÂÎª¸©Ñö£¬×óÓÒÎªºá¹ö
+  12          //                                 MCU¹¤×÷ÆµÂÊ28MHZ£¡£¡£¡
+  13          #include <rtx51tny.h>
+  14          #include <STC15F2K60S2.H>
+  15          #include <NRF24L01.H>
+  16          #include <AD.H>
+  17          sbit RLED=P0^5;
+  18          sbit GLED=P0^6;
+  19          sbit LKEY=P4^7;
+  20          sbit RKEY=P3^4;
+  21          
+  22          volatile int idata ay,ax,by,bx;
+  23          volatile int idata cy,cx,dy,dx;
+  24          volatile float idata battery;
+  25          unsigned char idata TxBuf[20]={0};
+  26          unsigned char idata RxBuf[20]={0};
+  27          void IO_and_Init();
+  28          
+  29          void AD() _task_ 0 //»ñÈ¡AD²ÉÑùÊı¾İ
+  30          {
+  31   1              IO_and_Init();   //³õÊ¼»¯I/O¿Ú
+  32   1              os_create_task (1);  //Æô¶¯½ø³Ì1
+  33   1              while(1)
+  34   1              {
+  35   2        cy=getADCResult(1);   //¶ÁÈ¡4¸öÒ¡¸ËÍ¨µÀÃ¿¸öÍ¨µÀµÄ8Î»Êı¾İ£¬È¡Öµ·¶Î§0-255
+  36   2              Delay(10);
+  37   2              cx=getADCResult(0);
+  38   2              Delay(10);
+  39   2              dy=getADCResult(3);
+  40   2        Delay(10);
+  41   2              dx=getADCResult(2);
+  42   2              Delay(10);
+  43   2              battery=(getADCResult(4)*5.05*100)/256;   //µç³ØµçÑ¹¼ì²âÍ¨µÀ µÍÓÚ3.7VÁÁºìµÆ
+  44   2              Delay(10);
+  45   2              if(battery<=370)
+  46   2        {
+  47   3              RLED=1;GLED=0;
+  48   3              }
+  49   2              else
+  50   2              {
+  51   3              RLED=0;GLED=1;
+  52   3              }
+  53   2              os_wait(K_IVL,3,0);//ÑÓÊ±3¸ö½ÚÅÄ
+  54   2        }
+  55   1      }
+C51 COMPILER V9.01   REMOTE_CONTROL                                                        04/30/2017 21:08:49 PAGE 2   
+
+  56          void NRF24L01()  _task_ 1
+  57          {       
+  58   1              while(1)
+  59   1              {
+  60   2               TxBuf[0]++;
+  61   2               TxBuf[1]=128;
+  62   2               TxBuf[2]=128;
+  63   2               TxBuf[3]=128;
+  64   2               if(cy<20) {goto EXIT;}   //µ±ÓÍÃÅÀ­ÖÁ×îµÍÊ±Ò£¿ØÆ÷½âËø
+  65   2               if(RKEY==0) {TxBuf[5]=1;} else {TxBuf[5]=0;}
+  66   2               if(LKEY==0) {TxBuf[6]=1;} else {TxBuf[6]=0;}
+  67   2               nRF24L01_TxPacket(TxBuf);//·¢ËÍTxBufÊı×éµÄÊı¾İ
+  68   2               os_wait(K_IVL,2,0);  //¸øÒ»¶¨ÑÓÊ±ÈÃÊı¾İ·¢ËÍÍê³É
+  69   2              }
+  70   1              EXIT:
+  71   1              while(1)
+  72   1              {
+  73   2                      if((dy-by)>=255){TxBuf[1]=255;}  //ÓÃÉÏµç¼ÇÂ¼µÄÊı¾İ¶Ô²ÉÑùÊı¾İ½øĞĞĞŞÕı£¬±£Ö¤Ò¡¸ËÖĞÎ»Ê±Êı¾İÎª128
+  74   2                      else if((dy-by)<=0){TxBuf[1]=0;}
+  75   2                      else{TxBuf[1]=dy-by;}
+  76   2                      
+  77   2                      if((dx-bx)>=255){TxBuf[2]=255;}
+  78   2                      else if((dx-bx)<=0){TxBuf[2]=0;}
+  79   2                      else{TxBuf[2]=dx-bx;}
+  80   2                      
+  81   2                      if((cx-ax)>=255){TxBuf[3]=255;}
+  82   2                      else if((cx-ax)<=0){TxBuf[3]=0;}
+  83   2                      else{TxBuf[3]=cx-ax;}
+  84   2                      //ÓÍÃÅ£ºTxBuf[4]
+  85   2          //Yaw£ºTxBuf[3]
+  86   2          //¸©Ñö£ºTxBuf[1]
+  87   2          //ºá¹ö£ºTxBuf[2]
+  88   2                      TxBuf[4]=cy;  //ÓÍÃÅÍ¨µÀ²»Ğè´¦Àí£¬Ö±½Ó·¢ËÍAD¼ì²âµÄ8Î»Êı¾İ¼´¿É£¬¸ù¾İAD²ÉÑùÔ­ÀíÒ×Öª¶ÁÈ¡µÄAD²ÉÑùÊı¾İ²»¿ÉÄÜÎ
+             -ª¸ºÒ²²»¿ÉÄÜ´óÓÚ255
+  89   2                      if(RKEY==0) {TxBuf[5]=1;} else {TxBuf[5]=0;}
+  90   2                if(LKEY==0) {TxBuf[6]=1;} else {TxBuf[6]=0;}
+  91   2                      TxBuf[0]++;
+  92   2                nRF24L01_TxPacket(TxBuf);//·¢ÉäÊı¾İ
+  93   2                      os_wait(K_IVL,2,0); //¸øÒ»¶¨ÑÓÊ±ÈÃÊı¾İ·¢ËÍÍê³É
+  94   2              }
+  95   1      }
+  96          
+  97          void IO_and_Init()
+  98          {
+  99   1                      P1M0=0x00;  //P1ÉèÎª¸ß×èÄ£Ê½
+ 100   1                      P1M1=0xFF;
+ 101   1                      P0M0=0XFF;  //ÆäËûI/O¿ÚÉèÖÃÎª×¼Ë«Ïò£¬ÈõÉÏÀ­Ä£Ê½
+ 102   1                      P0M1=0X00;
+ 103   1                      P2M0=0X00;
+ 104   1                      P2M1=0X00;
+ 105   1                      P3M0=0X00;
+ 106   1                      P3M1=0X00;
+ 107   1                      P4M0=0X00;
+ 108   1                      P4M1=0X00;
+ 109   1                      P5M0=0Xff;
+ 110   1                      P5M1=0X00;
+ 111   1                      LKEY=1;    //À­¸ß°´¼ü¼ì²âI/O¿ÚµçÆ½£¬°´¼üÎªµÍµçÆ½´¥·¢
+ 112   1                      RKEY=1;
+ 113   1                      init_NRF24L01();  //³õÊ¼»¯ÎŞÏßÄ£¿é
+ 114   1          adc_init();       //³õÊ¼»¯AD¼ì²âÄ£¿é
+ 115   1                ax=getADCResult(0)-128;  //¼ÇÂ¼ÉÏµçÊ±Ò¡¸ËµÄÊı¾İ×÷ÎªÖĞÎ»ĞŞÕı£¬ÒòÎªÒ¡¸ËÖĞÎ»ÒªÎª128¼´256/2
+ 116   1                Delay(10);
+C51 COMPILER V9.01   REMOTE_CONTROL                                                        04/30/2017 21:08:49 PAGE 3   
+
+ 117   1                by=getADCResult(3)-128;
+ 118   1          Delay(10);
+ 119   1                bx=getADCResult(2)-128;        
+ 120   1                Delay(10);
+ 121   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    613    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =     60    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

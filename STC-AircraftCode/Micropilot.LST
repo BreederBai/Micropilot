@@ -1,0 +1,334 @@
+C51 COMPILER V9.01   MICROPILOT                                                            04/30/2017 10:50:26 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MICROPILOT
+OBJECT MODULE PLACED IN Micropilot.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE Micropilot.C LARGE BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          //Ì×¼þ¹ºÂòµØÖ·£º                      http://shop112966725.taobao.com
+   2          //                                                 STCunio
+   3          //ËÄ´¨ ÃàÑô  Î÷ÄÏ¿Æ¼¼´óÑ§ ÐÅÏ¢¹¤³ÌÑ§Ôº µçÆø13¼¶ ÁõÆäÃñ  ¼¼ÊõÖ§³ÖQQ£º1203933924   
+   4          //±¾ÈËÖ»Ìá¹©ÓÐÏÞ¼¼ÊõÖ§³Ö,½ØÖ¹Ê±¼ä£º2015Äê3ÔÂ1ºÅ,¹ýÊ±²»ºò£¬ÇëÎð´òÈÅ¡£
+   5          //±¾ÈË½ñÄê´ó¶þÉÏÆÚ£¬ÓÉÓÚ¼¼ÊõÓÐÏÞÌáÎÊÊ±Çë²»Òª³¬¹ý±¾³ÌÐò¼°±¾Ó²¼þµÄ·¶Î§£¬Ê²Ã´½ÝÁª¹ßµ¼¼¼Êõ£¬À©Õ¹¿¨¶ûÂü£¬ÌÝ¶ÈÏÂ
+             -½µÂË²¨
+   6          //¾Í²»ÒªÎÊÁË£¬ÎÒÒ²²»¶®£¬×î½üÔÚ×ÔÑ§×Ô¶¯¿ØÖÆÔ­Àí£¬»¹ÊÇ¸öÐ¡ÔüÔü£¬Á¬STM32¶¼²»»á£¬×ö¸öËÄÖá¶¼»¹ÊÇÖ»ÄÜ¿à±ÆµØÓÃ51µ
+             -¥Æ¬»ú
+   7          //±¾³ÌÐòÊôÓÚÍêÈ«¿ªÔ´³ÌÐò£¬ÔÊÐíÓÃÓÚ½øÐÐ¶þ´Î¿ª·¢£¬µ«ÊÇ²»ÄÜ×öÏ¸Ð¡¸Ä¶¯ºó¾ÍÉùÃ÷×Ô¼ºÓµÓÐ°æÈ¨£¬
+   8          //¶ÔÓÚ³­Ï®ºóÓÖÉùÃ÷×Ô¼ºÓÐ°æÈ¨ÊÇ×Ô¼º¿ª·¢µÄÎÒÖ»ÏëËµÎÒQNMLGB¡£
+   9          
+  10          //ÐÞ¸Ä±¾³ÌÐòÓ¦×¢Òâ£¡
+  11          //Èç¹û½«´Ë³ÌÐòÓÅ»¯£¬ÐÞ¸Ä£¬Ôö¼Ó¹¦ÄÜ£¬Ðë¿ªÔ´ÖÁ°¢ÄªÂÛÌ³ STC 1Tµ¥Æ¬»ú °æ¿é
+  12          //Ê¹ÓÃ±¾³ÌÐòÓ¦×ñÑ­GNUGPLÐ­Òé£¡
+  13          
+  14          //±¾³ÌÐòÊôÓÚ±¾Ó²¼þµÄ×îÖÕ°æ±¾£¬²»»á¼ÌÐøÉý¼¶£¬µ«ÊÇ»á²»¶¨ÆÚµÄ·¢²¼ÐÞ¸´BugºóµÄ³ÌÐò¡£
+  15          
+  16          //ÌØ±ðÃùÐ»ÔÚÑÐ·¢¹ý³ÌÖÐ¸øÓèÖ§³ÖµÄÅóÓÑ¼°ÍÅÌå£º
+  17          //                                         Î÷ÄÏ¿Æ¼¼´óÑ§ µçÆø09¼¶ Áõ³©
+  18          //                                         Î÷ÄÏ¿Æ¼¼´óÑ§ Ç¶ÈëÊ½¼¼ÊõÊµÑéÊÒ ºÎ¿Æ¾ý
+  19          //                                         Î÷ÄÏ¿Æ¼¼´óÑ§ º½¿Õº½ÌìÑ§Éçôß¿ÕÆø¶¯Á¦Ñ§ÊµÑéÊÒ
+  20          //*************************************2015Äê2ÔÂ14ÈÕ Öø***************************************************
+             -***********
+  21          //Ó²¼þ²ÎÊý£º
+  22          //µç³Ø:1S/3.7Vµç³Ø ÍÆ¼ö300-650mAh×óÓÒ   500mahÒÔÉÏµÄµç³ØÍÆ¼ö°²×°ÔÚ±³Ãæ
+  23          //µç»ú/½°:720¿ÕÐÄ±­/59MM½°         
+  24          //   ÌØ±ðÉùÃ÷£º±¾³ÌÐò²âÊÔµÄ¿ÕÐÄ±­ÎªÌÔ±¦µêÆÌ ÉîÛÚ½ÜÊ¢µç»ú µÄ720¿ÕÐÄ±­ ÆäËû³§¼ÒµÄµç»ú²»ÊÊÓÃÓÚ±¾³ÌÐò£¬³ý·Ç×ÔÐ
+             -Ðµ÷ÕûPID
+  25          //             ±¾³ÌÐò²âÊÔµÄÂÝÐý½°ÎªÌÔ±¦µêÆÌ »¢»¢Æ½¼Ûµê µÄ59MMÖ±¾¶ 1mm¿×¾¶ÂÝÐý½° ÆäËû³§¼ÒµÄÂÝÐý½°²»ÊÊÓÃÓÚ±¾
+             -³ÌÐò£¬³ý·Ç×ÔÐÐµ÷ÕûPID
+  26          //MCU IAP15W4K61S4@28.000MHZ  (B°æ£¡A°æµ¥Æ¬»ú¾ø¶Ô²»ÊÊºÏ£¡)
+  27          //ÌØ±ðËµÃ÷£¬±¾³ÌÐòÄ¿Ç°Ö»ÊÊºÏIAPÏµÁÐµÄµ¥Æ¬»ú£¬·ÇIAPµ¥Æ¬»úÊ¹ÓÃÐëÐÞ¸ÄEEPROM¶ÁÐ´µØÖ·
+  28          //ÍÓÂÝÒÇ¼ÓËÙ¶È¼Æ£ºMPU-6050 
+  29          //ÎÞÏßÐ¾Æ¬:NRF24L01
+  30          //µç»úÇý¶¯MOS¹Ü:AO3400
+  31          //ÉýÑ¹·½°¸:BL8530
+  32          //3.3VÎÈÑ¹·½°¸:ME6219C-33-M5G
+  33          //ÏÂÔØ¿Ú±£»¤:1Kµç×è
+  34          //»ú¼Ü³ß´ç:94mm*94mm
+  35          
+  36          //Éè¼ÆÊ§ÎóµÄµØ·½£º
+  37          //MOS¹Ü±£»¤ÓÃµÄÐ¤ÌØ»ù·Å´íÁËÎ»ÖÃ£¬²»¹ýÍêÈ«²»Ó°ÏìÊ¹ÓÃ£¬ÕâÖÖÐ¡ËÄÖá²»¼ÓÐ¤ÌØ»ù±£»¤¶¼ÐÐ¡£
+  38          
+  39          //Èí¼þ²ÎÊý£º
+  40          //×ËÌ¬½âËã£ºËÄÔªÊý
+  41          //ÂË²¨£º»¥²¹ÂË²¨£¨From µÂ¹ú¿ªÔ´ËÄÖá£©
+  42          //PID£º´®¼¶PID Íâ»·PI,ÄÚ»·PID
+  43          
+  44          //Êý¾Ý¶¨ÒåËµÃ÷£º
+  45          //data 51µ¥Æ¬»úÆ¬ÄÚRAM×îÇ°Ãæ128×Ö½ÚRAM ÓÃACC¶ÁÐ´£¬ËÙ¶È×î¿ì
+  46          //idata Æ¬ÄÚRAM×îÇ°Ãæ256×Ö½ÚµÄRAM °üÀ¨data ÓÃÀàËÆÖ¸ÕëÄ£Ê½·ÃÎÊ ÊÊºÏÓÃÓÚÖ¸Õë²Ù×÷
+  47          //pdata Íâ²¿À©Õ¹RAMµÄÇ°256×Ö½ÚµÄRAM ²»ÒªÓÃ »á´óÒÌÂè£¡
+  48          //xdata Íâ²¿À©Õ¹RAM ÓÃDPTR·ÃÎÊ
+  49          #include <STC15W4K60S4.H>
+  50          #include <intrins.h>
+C51 COMPILER V9.01   MICROPILOT                                                            04/30/2017 10:50:26 PAGE 2   
+
+  51          #include <NRF24L01.H>
+  52          #include <MPU6050.H>
+  53          #include <math.h>
+  54          #include <STC15W4KPWM.H>
+  55          #include <Timer.h>
+  56          #include <EEPROM.h>
+  57          #include <USART.h>
+  58          #include <IMU.H>
+  59          //******************************************************************************************************
+  60          float XE=0,YE=0;                 //½Ç¶ÈÈËÎªÐÞÕý£¬µ«ÊÇËÄÖáÆ¯ÒÆÒ»°ãÊÇÓ²¼þÔì³ÉµÄ£¬¹Ê²»½«´ËÖµÐ´ÈëEEPROM£¬Õâ¸öÖ
+             -»ÊÇÓ¦¼±Ê¹ÓÃ£¬·¢ÏÖÆ¯ÒÆÓ¦
+  61                                           //Á¬ÖÁÉÏÎ»»ú¼ì²éµç»úÖáÊÇ·ñ·¢ÉúÍäÇú£¬·¢ÏÖÎÊÌâµç»ú¼°Ê±¸ü»»
+  62          float YM=0;              //ÓÍÃÅ±ä»¯ËÙ¶È¿ØÖÆ£¬²»ÕâÑù×öµÄ»°¿ìËÙ±ä»¯ÓÍÃÅÊ±ËÄÖá»áÊ§ËÙ·­×ª²¢GG
+  63          int ich1=0,ich2=0,ich3=0,ich4=0,ich5=0,ich6=0;                           //ÎÞÏß´®¿Ú/´®¿ÚÏà¹Ø
+  64          int speed0=0,speed1=0,speed2=0,speed3=0,V=0;           //µç»úËÙ¶È²ÎÊý
+  65          int PWM0=0,PWM1=0,PWM2=0,PWM3=0;  //¼ÓÔØÖÁPWMÄ£¿éµÄ²ÎÊý
+  66          int g_x=0,g_y=0,g_z=0;            //ÍÓÂÝÒÇ½ÃÕý²ÎÊý
+  67          char a_x=0,a_y=0;                 //½Ç¶È½ÃÕý²ÎÊý
+  68          unsigned char TxBuf[20]={0};
+  69          unsigned char RxBuf[20]={0};  
+  70          double PID_x=0,PID_y=0,PID_z=0;  //PID×îÖÕÊä³öÁ¿
+  71          float FR1=0,FR2=0,FR3=0;         //½«charÊý¾Ý×ª´æÎªfloatÐÍ
+  72          //*****************½Ç¶È²ÎÊý*************************************************
+  73          double Gyro_y=0,Gyro_x=0,Gyro_z=0;        //YÖáÍÓÂÝÒÇÊý¾ÝÔÝ´æ
+  74          double Accel_x=0,Accel_y=0,Accel_z=0;       //XÖá¼ÓËÙ¶ÈÖµÔÝ´æ
+  75          double Angle_ax=0,Angle_ay=0,Angle_az=0;  //ÓÉ¼ÓËÙ¶È¼ÆËãµÄ¼ÓËÙ¶È(»¡¶ÈÖÆ)
+  76          double Angle_gy=0,Angle_gx=0,Angle_gz=0;  //ÓÉ½ÇËÙ¶È¼ÆËãµÄ½ÇËÙÂÊ(½Ç¶ÈÖÆ)
+  77          double AngleAx=0,AngleAy=0;               //Èý½Çº¯Êý½âËã³öµÄÅ·À­½Ç
+  78          double Angle=0,Angley=0;                  //ËÄÔªÊý½âËã³öµÄÅ·À­½Ç degree
+  79          double Anglezlate=0;                      //ZÖáÏà¹Ø
+  80          double Ax=0,Ay=0;                         //¼ÓÈëÒ£¿ØÆ÷¿ØÖÆÁ¿ºóµÄ½Ç¶È
+  81          //****************×ËÌ¬´¦ÀíºÍPID*********************************************
+  82          float Out_PID_X=0,Last_Angle_gx=0;//Íâ»·PIÊä³öÁ¿  ÉÏÒ»´ÎÍÓÂÝÒÇÊý¾Ý
+  83          float Out_XP=35,Out_XI=0.01,ERRORX_Out=0;//Íâ»·P  Íâ»·I  Íâ»·Îó²î»ý·Ö
+  84          float In_XP=0.4,In_XI=0.01,In_XD=9,ERRORX_In=0;//ÄÚ»·P  ÄÚ»·I   ÄÚ»·D  ÄÚ»·Îó²î»ý·Ö
+  85          
+  86          float Out_PID_Y=0,Last_Angle_gy=0;
+  87          float Out_YP=35,Out_YI=0.01,ERRORY_Out=0;
+  88          float In_YP=0.4,In_YI=0.01,In_YD=9,ERRORY_In=0;
+  89          
+  90          float ZP=5.0,ZD=4.0;//×ÔÐý¿ØÖÆµÄP D
+  91          
+  92          int lastR0=0,ZT=0; //ÉÏÒ»´ÎRxBuf[0]Êý¾Ý(RxBuf[0]Êý¾ÝÔÚ²»¶Ï±ä¶¯µÄ)   ×´Ì¬±êÊ¶
+  93          int i=0;
+  94          void Angle_Calculate() interrupt 1 
+  95          {       
+  96   1              //if(YM<RxBuf[4]&&(RxBuf[4]-YM)<=2){YM++;YM++;}
+  97   1              //else if(YM>RxBuf[4]&&(YM-RxBuf[4])<=2){YM--;YM--;}  //·ÀÖ¹ÓÍÃÅ±ä»¯¹ý¿ì¶øÊ§ËÙ
+  98   1              //else {YM=RxBuf[4];}
+  99   1              if(RxBuf[1]>FR1){FR1+=0.2;}else if(RxBuf[1]<FR1){FR1-=0.2;}
+ 100   1              if(RxBuf[2]>FR2){FR2+=0.2;}else if(RxBuf[2]<FR2){FR2-=0.2;}
+ 101   1              
+ 102   1              YM=(float)RxBuf[4]*3/4;
+ 103   1              
+ 104   1              if(YM>100)//Èç¹ûÓÍÃÅ´óÓÚ100 ¼´¿ªÊ¼Æð·É
+ 105   1              {
+ 106   2                      if(RxBuf[0]==lastR0)//Èç¹ûRxBuf[0]µÄÊý¾ÝÃ»ÓÐÊÕµ½ ¼´Ê¸Áª
+ 107   2                      {
+ 108   3                              ZT++;  //×´Ì¬±êÊ¶+1
+ 109   3                              if(ZT>128){ZT=128;}  //×´Ì¬±êÊ¶´óÓÚ128¼´1ÃëÃ»ÓÐÊÕµ½Êý¾Ý£¬Ê§¿Ø±£»¤
+ 110   3                      }
+ 111   2                      else{ZT=0;}
+C51 COMPILER V9.01   MICROPILOT                                                            04/30/2017 10:50:26 PAGE 3   
+
+ 112   2              }
+ 113   1              else{ZT=0;} //ÊÕµ½ÐÅºÅÍË³öÊ§¿Ø±£»¤
+ 114   1              if(ZT==128){YM=101;RxBuf[1]=128;RxBuf[2]=128;} //´¥·¢Ê§¿Ø±£»¤ ÓÍÃÅÎª1°ëÉÙÒ»µã£¬»ºÂýÏÂ½µ£¬¸©Ñöºá¹ö·½Ïò¶æ¹é
+             -ÖÐ
+ 115   1              lastR0=RxBuf[0];
+ 116   1              
+ 117   1              i++;
+ 118   1              if(i==130){i=129;}
+ 119   1              Accel_y= GetData(ACCEL_YOUT_H); //¶ÁÈ¡6050Êý¾Ý
+ 120   1              Accel_x= GetData(ACCEL_XOUT_H);            
+ 121   1              Accel_z= GetData(ACCEL_ZOUT_H);      
+ 122   1              Gyro_x = GetData(GYRO_XOUT_H)-g_x;
+ 123   1              Gyro_y = GetData(GYRO_YOUT_H)-g_y;
+ 124   1              Gyro_z = GetData(GYRO_ZOUT_H)-g_z;      
+ 125   1              Last_Angle_gx=Angle_gx;   //´¢´æÉÏÒ»´Î½ÇËÙ¶ÈÊý¾Ý
+ 126   1              Last_Angle_gy=Angle_gy; 
+ 127   1              Angle_ax=(Accel_x)/8192;  //¼ÓËÙ¶È´¦Àí
+ 128   1              Angle_az=(Accel_z)/8192;  //¼ÓËÙ¶ÈÁ¿³Ì +-4g/S
+ 129   1              Angle_ay=(Accel_y)/8192;        //×ª»»¹ØÏµ8192LSB/g
+ 130   1              Angle_gx=(Gyro_x)/65.5;   //ÍÓÂÝÒÇ´¦Àí
+ 131   1              Angle_gy=(Gyro_y)/65.5;   //ÍÓÂÝÒÇÁ¿³Ì +-500¶È/S
+ 132   1              Angle_gz=(Gyro_z)/65.5;   //×ª»»¹ØÏµ65.5LSB/¶È
+ 133   1      //***********************************ËÄÔªÊý½âËã***********************************
+ 134   1              IMUupdate(Angle_gx*0.0174533,Angle_gy*0.0174533,Angle_gz*0.0174533,Angle_ax,Angle_ay,Angle_az);
+ 135   1              //0.174533ÎªPI/180 Ä¿µÄÊÇ½«½Ç¶È×ª»¡¶È
+ 136   1      //********************Èý½Çº¯ÊýÖ±½Ó½âËãÒÔ¹©±È½ÏËÄÔªÊý½âËã¾«×¼¶È********************
+ 137   1              AngleAx=atan(Angle_ax/sqrt(Angle_ay*Angle_ay+Angle_az*Angle_az))*57.2957795f; //ºóÃæµÄÊý×ÖÊÇ180/PI Ä¿µÄÊÇ
+             -»¡¶È×ª½Ç¶È
+ 138   1        AngleAy=atan(Angle_ay/sqrt(Angle_ax*Angle_ax+Angle_az*Angle_az))*57.2957795f;
+ 139   1      //**************XÖáÖ¸Ïò***********************************************************
+ 140   1              FR1=((float)RxBuf[1]-128)/7; //charÀàÐÍ×ª´æÎªfloatÒÔ±ã³ý·¨ÔËËã
+ 141   1              
+ 142   1              Ax=Angle-FR1-a_x;      //½Ç¶È¿ØÖÆÁ¿¼ÓÔØÖÁ½Ç¶È
+ 143   1              
+ 144   1              if(YM>20)
+ 145   1              {
+ 146   2              ERRORX_Out+=Ax;//Íâ»·»ý·Ö(ÓÍÃÅÐ¡ÓÚÄ³¸öÖµÊ±²»»ý·Ö)
+ 147   2              }
+ 148   1              else
+ 149   1              {
+ 150   2                      ERRORX_Out=0; //ÓÍÃÅÐ¡ÓÚ¶¨ÖµÊ±Çå³ý»ý·ÖÖµ
+ 151   2              }
+ 152   1              if(ERRORX_Out>500){ERRORX_Out=500;}
+ 153   1              else if(ERRORX_Out<-500){ERRORX_Out=-500;}//»ý·ÖÏÞ·ù
+ 154   1              
+ 155   1              Out_PID_X=Ax*Out_XP+ERRORX_Out*Out_XI;//Íâ»·PI
+ 156   1              
+ 157   1              if(YM>20)
+ 158   1              {
+ 159   2             ERRORX_In+=(Angle_gy-Out_PID_X);  //ÄÚ»·»ý·Ö(ÓÍÃÅÐ¡ÓÚÄ³¸öÖµÊ±²»»ý·Ö)
+ 160   2              }       
+ 161   1          else
+ 162   1              {
+ 163   2                      ERRORX_In=0; //ÓÍÃÅÐ¡ÓÚ¶¨ÖµÊ±Çå³ý»ý·ÖÖµ
+ 164   2              }       
+ 165   1              if(ERRORX_In>500){ERRORX_In=500;}
+ 166   1          else if(ERRORX_In<-500){ERRORX_In=-500;}//»ý·ÖÏÞ·ù
+ 167   1              
+ 168   1              PID_x=(Angle_gy+Out_PID_X)*In_XP+ERRORX_In*In_XI+(Angle_gy-Last_Angle_gy)*In_XD;//ÄÚ»·PID
+ 169   1              
+ 170   1          if(PID_x>1000){PID_x=1000;}  //Êä³öÁ¿ÏÞ·ù
+ 171   1              if(PID_x<-1000){PID_x=-1000;}
+C51 COMPILER V9.01   MICROPILOT                                                            04/30/2017 10:50:26 PAGE 4   
+
+ 172   1              
+ 173   1              speed0=0-PID_x,speed2=0+PID_x;
+ 174   1      //**************YÖáÖ¸Ïò**************************************************
+ 175   1              if(RxBuf[2]>=143||RxBuf[2]<=113);else{RxBuf[2]=128;}
+ 176   1              FR2=((float)RxBuf[2]-128)/7; //charÀàÐÍ×ª´æÎªfloatÒÔ±ã³ý·¨ÔËËã
+ 177   1              Ay=Angley+FR2-a_y;      //½Ç¶È¿ØÖÆÁ¿¼ÓÔØÖÁ½Ç¶È
+ 178   1              
+ 179   1              if(YM>20)
+ 180   1              {
+ 181   2        ERRORY_Out+=Ay;//Íâ»·»ý·Ö(ÓÍÃÅÐ¡ÓÚÄ³¸öÖµÊ±²»»ý·Ö)
+ 182   2              }
+ 183   1              else
+ 184   1              {
+ 185   2                      ERRORY_Out=0; //ÓÍÃÅÐ¡ÓÚ¶¨ÖµÊ±Çå³ý»ý·ÖÖµ
+ 186   2              }       
+ 187   1              if(ERRORY_Out>500){ERRORY_Out=500;}
+ 188   1              else if(ERRORY_Out<-500){ERRORY_Out=-500;}//»ý·ÖÏÞ·ù
+ 189   1              
+ 190   1              Out_PID_Y=Ay*Out_YP+ERRORY_Out*Out_YI;//Íâ»·PI
+ 191   1              
+ 192   1              if(YM>20)
+ 193   1              {
+ 194   2        ERRORY_In+=(Angle_gx-Out_PID_Y);  //ÄÚ»·»ý·Ö(ÓÍÃÅÐ¡ÓÚÄ³¸öÖµÊ±²»»ý·Ö)
+ 195   2              }               
+ 196   1              else
+ 197   1              {
+ 198   2                      ERRORY_In=0; //ÓÍÃÅÐ¡ÓÚ¶¨ÖµÊ±Çå³ý»ý·ÖÖµ
+ 199   2              }       
+ 200   1              if(ERRORY_In>500){ERRORY_In=500;}
+ 201   1        else if(ERRORY_In<-500){ERRORY_In=-500;}//»ý·ÖÏÞ·ù
+ 202   1              
+ 203   1              PID_y=(Angle_gx+Out_PID_Y)*In_YP+ERRORY_In*In_YI+(Angle_gx-Last_Angle_gx)*In_YD;//ÄÚ»·PID
+ 204   1              
+ 205   1        if(PID_y>1000){PID_y=1000;}  //Êä³öÁ¿ÏÞ·ù
+ 206   1              if(PID_y<-1000){PID_y=-1000;}
+ 207   1              
+ 208   1              speed3=0+PID_y,speed1=0-PID_y;//¼ÓÔØµ½ËÙ¶È²ÎÊý
+ 209   1      //**************ZÖáÖ¸Ïò(ZÖáËæ±ãÀ²£¬×ÔÐý¿ØÖÆÃ»±ØÒªÉÏ´®¼¶PID)*****************************        
+ 210   1              FR3=((float)RxBuf[3]-128)*1.5;
+ 211   1              Angle_gz-=FR3; 
+ 212   1              PID_z=(Angle_gz)*ZP+(Angle_gz-Anglezlate)*ZD;
+ 213   1              Anglezlate=Angle_gz;
+ 214   1              speed0=speed0+PID_z,speed2=speed2+PID_z;
+ 215   1              speed1=speed1-PID_z,speed3=speed3-PID_z;
+ 216   1      //*****************´®¿Ú¼°ÎÞÏß´®¿ÚÏà¹Ø***************************************************
+ 217   1              ich1=Ax;
+ 218   1              ich2=Ay;
+ 219   1              ich3=AngleAx;                 //´Ë´¦¿É·¢ËÍ6¸öÊý¾ÝÖÁÉÏÎ»»ú£¬ÐèÒª·¢ËÍÊ²Ã´Êý¾ÝÔÚ´Ë´¦ÐÞ¸Ä¼´¿É
+ 220   1              ich4=AngleAy;
+ 221   1              ich5=0;
+ 222   1              ich6=0;
+ 223   1      //**************½«ËÙ¶È²ÎÊý¼ÓÔØÖÁPWMÄ£¿é*************************************************        
+ 224   1              PWM0=(1000-YM*4+speed0);
+ 225   1              if(PWM0>1000){PWM0=1000;}    //ËÙ¶È²ÎÊý¿ØÖÆ£¬·ÀÖ¹³¬¹ýPWM²ÎÊý·¶Î§0-1000
+ 226   1              else if(PWM0<0){PWM0=0;}
+ 227   1      
+ 228   1              PWM1=(1000-YM*4+speed1);
+ 229   1              if(PWM1>1000){PWM1=1000;}
+ 230   1              else if(PWM1<0){PWM1=0;}
+ 231   1      
+ 232   1              PWM2=(1000-YM*4+speed2);
+ 233   1              if(PWM2>1000){PWM2=1000;}
+C51 COMPILER V9.01   MICROPILOT                                                            04/30/2017 10:50:26 PAGE 5   
+
+ 234   1              else if(PWM2<0){PWM2=0;}
+ 235   1              
+ 236   1              PWM3=(1000-YM*4+speed3);
+ 237   1              if(PWM3>1000){PWM3=1000;}
+ 238   1              else if(PWM3<0){PWM3=0;}
+ 239   1        if(YM>=10)
+ 240   1              {PWM(PWM1,PWM2,PWM0,PWM3);}//1203
+ 241   1              else 
+ 242   1              {PWM(1000,1000,1000,1000);}
+ 243   1      
+ 244   1      } 
+ 245          void main()
+ 246          {
+ 247   1      PWMGO();//³õÊ¼»¯PWM
+ 248   1      IAPRead();//¶ÁÈ¡ÍÓÂÝÒÇ¾²²î
+ 249   1      InitMPU6050();//³õÊ¼»¯MPU-6050
+ 250   1      Usart_Init();//³õÊ¼»¯´®¿Ú
+ 251   1      Time0_Init();//³õÊ¼»¯¶¨Ê±Æ÷
+ 252   1      RxBuf[1]=128;
+ 253   1      RxBuf[2]=128;
+ 254   1      RxBuf[3]=128;
+ 255   1      RxBuf[4]=0;
+ 256   1      while(1)
+ 257   1      {          
+ 258   2                                      Delay(500);
+ 259   2                                      nRF24L01_RxPacket(RxBuf);
+ 260   2                                      if(RxBuf[5]==1&&i>128)  
+ 261   2              {
+ 262   3                                      IAP_Gyro();
+ 263   3                                      RxBuf[5]=0;
+ 264   3                                      EA=0;
+ 265   3                                      PWMCKS=0x10;         
+ 266   3                                      T2L = 0xEB;     
+ 267   3                          T2H = 0xFF;
+ 268   3                                      PWM(960,960,960,960);
+ 269   3                  Delay(60000); //Ð£×¼Íê±ÏµÎÒ»Éù
+ 270   3              PWM(1000,1000,1000,1000);       
+ 271   3              PWMCKS=0x00;
+ 272   3              EA=1;
+ 273   3              i=0;                                    
+ 274   3                                      }
+ 275   2                                      if(RxBuf[6]==1&&i>128)  
+ 276   2              {
+ 277   3                                      IAP_Angle();
+ 278   3                                      RxBuf[6]=0;
+ 279   3                                      EA=0;
+ 280   3                                      PWMCKS=0x10;         
+ 281   3                                      T2L = 0xEB;     
+ 282   3                    T2H = 0xFF;
+ 283   3                                      PWM(960,960,960,960);
+ 284   3                    Delay(60000);  //Ð£×¼Íê±ÏµÎÒ»Éù
+ 285   3              PWM(1000,1000,1000,1000);       
+ 286   3              PWMCKS=0x00;
+ 287   3                                      EA=1;   
+ 288   3                                      i=0;
+ 289   3                                      }
+ 290   2                    //Send(ich1,ich2,ich3,ich4,ich5,ich6);  //´®¿Ú·¢ËÍÊý¾Ý  ÈçÐèÁ¬½ÓÉÏÎ»»ú£¬ÐëÈ¡Ïû×¢ÊÍ±¾¾ä£¡£¡£¡×¢ÊÍ±¾¾
+             -äÊÇÎªÁË¼õÐ¡Ò£¿ØÑÓÊ±
+ 291   2      }
+ 292   1      }
+
+
+C51 COMPILER V9.01   MICROPILOT                                                            04/30/2017 10:50:26 PAGE 6   
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   4234    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =    276    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

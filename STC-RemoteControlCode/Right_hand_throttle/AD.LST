@@ -1,0 +1,45 @@
+C51 COMPILER V9.01   AD                                                                    04/30/2017 21:24:15 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE AD
+OBJECT MODULE PLACED IN AD.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE AD.C LARGE BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <STC15F2K60S2.H>
+   2          #include <intrins.h>
+   3          #include <NRF24L01.H>
+   4          #include <AD.H>                 
+   5          
+   6          //*********************************初始化A/D转换*************************************************
+   7          void adc_init()
+   8          {
+   9   1              P1ASF=0x1f;
+  10   1              ADC_RES=0;       
+  11   1              ADC_CONTR = ADC_POWER | ADC_SPEEDLL;
+  12   1              Delay(10); //适当延时
+  13   1      }
+  14          //**********************************获得A/D转换的数据********************************************
+  15          uint getADCResult(char ch)
+  16          {
+  17   1              ADC_CONTR = ADC_POWER | ADC_SPEEDLL | ch | ADC_START;
+  18   1              Delay(5);
+  19   1              while (!(ADC_CONTR & ADC_FLAG));//等待转换完成
+  20   1              ADC_CONTR &= ~ADC_FLAG; //关闭adc
+  21   1              return ADC_RES;
+  22   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     40    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

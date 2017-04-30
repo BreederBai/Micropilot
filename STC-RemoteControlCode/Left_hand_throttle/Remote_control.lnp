@@ -1,0 +1,6 @@
+"STARTUP.obj",
+"AD.obj",
+"NRF24L01.obj",
+"Remote_control.obj" 
+TO "Remote_control" Rtx51Tiny 
+RAMSIZE(256) 
