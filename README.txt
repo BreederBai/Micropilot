@@ -1,2 +1,5 @@
 # Micropilot
 这个源代码是STC官网上的开源小四轴，挂到Github上，是为了方便大家学习，同时也想不断充实这个开源项目，如果我的做法有任何不妥之处，请及时联系我。
+Description文件夹里是小四轴的电路图和我读代码的随笔。
+STC-AircraftCode文件夹里是小四轴机身的源代码。
+STC-RemoteControlCode文件夹里是小四轴遥控器的源代码，包括日本手和美国手。
